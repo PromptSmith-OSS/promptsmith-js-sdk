@@ -13,13 +13,13 @@ export type Prompt = {
 
 class PromptSmith {
   private axiosInstance: AxiosInstance;
-  private ttlinSeconds: number;
+  private readonly ttlInSeconds: number;
   private cache: Map<string, {
     value: Prompt,
     timestamp: number
   }> = new Map();
 
-  constructor(baseURL: string, api_key: string, ttl_in_seconds: number) {
+  constructor(baseURL: string, api_key: string, ttlInSeconds: number = 60) {
     this.axiosInstance = axios.create({
       baseURL,
       headers: {
@@ -27,7 +27,7 @@ class PromptSmith {
         'Authorization': `Bearer ${api_key}`,
       },
     });
-    this.ttlinSeconds = ttl_in_seconds;
+    this.ttlInSeconds = ttlInSeconds;
   }
 
   public getPrompt = async (unique_key: string): Promise<Prompt> => {
@@ -57,7 +57,7 @@ class PromptSmith {
       return null;
     }
     const {value, timestamp} = data;
-    if (Date.now() - timestamp > this.ttlinSeconds * 1000) {
+    if (Date.now() - timestamp > this.ttlInSeconds * 1000) {
       this.cache.delete(key);
       return null;
     }
