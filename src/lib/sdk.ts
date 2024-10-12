@@ -11,7 +11,7 @@ export type Prompt = {
 }
 
 
-class PromptSmith {
+export class PromptSmith {
   private axiosInstance: AxiosInstance;
   private readonly ttlInSeconds: number;
   private cache: Map<string, {
