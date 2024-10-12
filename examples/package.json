@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ts-example": "ts-node ts-example.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "promptsmith-js-sdk": "^0.0.2"
+    "dotenv": "^16.4.5",
+    "promptsmith-js-sdk": "^0.0.3"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
   }
 }
