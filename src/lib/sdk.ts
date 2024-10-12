@@ -11,7 +11,7 @@ export type Prompt = {
 }
 
 
-class ApiClient {
+class PromptSmith {
   private axiosInstance: AxiosInstance;
   private ttlinSeconds: number;
   private cache: Map<string, {
@@ -66,4 +66,4 @@ class ApiClient {
 }
 
 
-export default ApiClient;
+export default PromptSmith;
